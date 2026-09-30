@@ -15,6 +15,7 @@ public class App {
 
         int datosOrdenados[] = bubbleSort(datos);
 
+        System.out.println("Datos ordenados:");
         for (int i = 0; i < datosOrdenados.length; i++) {
             System.out.print(datosOrdenados[i] + " ");
         }
@@ -22,13 +23,23 @@ public class App {
 
         System.out.print("Ingrese la capacidad a buscar: ");
         int objetivo = numeros.nextInt();
+
+        long inicioTiempo = System.nanoTime();
+
         int posicion = busquedaBinaria(datosOrdenados, objetivo);
+
+        long finTiempo = System.nanoTime();
+
+        long duracionNanosegundos = finTiempo - inicioTiempo;
+        double duracionMilisegundos = duracionNanosegundos / 1e6;
  
         if (posicion != -1) {
             System.out.println("Existe un salón con capacidad " + objetivo + " en la posición " + posicion);
         } else {
             System.out.println("No hay ningún salón con capacidad de " + objetivo);
         }
+
+        System.out.printf("Tiempo de búsqueda: %d ns (%.4f ms)%n", duracionNanosegundos, duracionMilisegundos);
  
         numeros.close();
     }
