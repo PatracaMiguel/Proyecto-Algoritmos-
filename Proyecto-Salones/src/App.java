@@ -18,7 +18,19 @@ public class App {
         for (int i = 0; i < datosOrdenados.length; i++) {
             System.out.print(datosOrdenados[i] + " ");
         }
+        System.out.println();
 
+        System.out.print("Ingrese la capacidad a buscar: ");
+        int objetivo = numeros.nextInt();
+        int posicion = busquedaBinaria(datosOrdenados, objetivo);
+ 
+        if (posicion != -1) {
+            System.out.println("Existe un salón con capacidad " + objetivo + " en la posición " + posicion);
+        } else {
+            System.out.println("No hay ningún salón con capacidad de " + objetivo);
+        }
+ 
+        numeros.close();
     }
 
     public static int[] bubbleSort(int[] arr) {
@@ -41,4 +53,21 @@ public class App {
             }
             return arr;
         }
+        public static int busquedaBinaria(int[] arr, int objetivo) {
+        int inicio = 0;
+        int fin = arr.length - 1;
+ 
+        while (inicio <= fin) {
+            int medio = inicio + (fin - inicio) / 2;
+ 
+            if (arr[medio] == objetivo) {
+                return medio;     
+            } else if (arr[medio] < objetivo) {
+                inicio = medio + 1;   
+            } else {
+                fin = medio - 1;      
+            }
+        }
+        return -1;
+    }
 }
