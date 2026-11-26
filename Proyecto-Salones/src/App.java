@@ -31,7 +31,7 @@ public class App {
 
                 case 3:
                     if (datosActuales == null || datosActuales.length == 0) {
-                        System.out.println("\n[!] Primero debe ingresar o generar datos.");
+                        System.out.println("\nPrimero debe ingresar o generar datos.");
                     } else {
                         datosActuales = menuSeleccionAlgoritmo(scanner, datosActuales);
                     }
@@ -39,7 +39,7 @@ public class App {
 
                 case 4:
                     if (datosActuales == null || datosActuales.length == 0) {
-                        System.out.println("\n[!] Primero debe ingresar o generar datos.");
+                        System.out.println("\nPrimero debe ingresar o generar datos.");
                     } else {
                         ejecutarComparativaActuales(datosActuales);
                     }
@@ -47,10 +47,10 @@ public class App {
 
                 case 5:
                     if (datosActuales == null || datosActuales.length == 0) {
-                        System.out.println("\n[!] No hay datos cargados para realizar busquedas.");
+                        System.out.println("\nNo hay datos cargados para realizar busquedas.");
                     } else {
                         if (!estaOrdenado(datosActuales)) {
-                            System.out.println("\n[!] El arreglo actual no estaba ordenado. Ordenandolo con Quick Sort...");
+                            System.out.println("\nEl arreglo actual no estaba ordenado. Ordenandolo con Quick Sort...");
                             int[] copia = datosActuales.clone();
                             AlgoritmosOrdenamiento.quickSort(copia);
                             datosActuales = copia;
@@ -68,7 +68,7 @@ public class App {
                     break;
 
                 default:
-                    System.out.println("\nOpcion invalida. Intente de nuevo.");
+                    System.out.println("\nOpcion invalida");
             }
 
         } while (opcionPrincipal != 0);
@@ -103,9 +103,9 @@ public class App {
         }
 
         System.out.println("\nSeleccione el escenario:");
-        System.out.println("1. Caso 1: Aleatorio (desordenado)");
-        System.out.println("2. Caso 2: Ordenado ascendente (mejor caso)");
-        System.out.println("3. Caso 3: Inverso descendente (peor caso)");
+        System.out.println("Caso 1: Aleatorio (desordenado)");
+        System.out.println("Caso 2: Ordenado ascendente (mejor caso)");
+        System.out.println(" Caso 3: Inverso descendente (peor caso)");
         System.out.print("Elija opcion: ");
         int caso = leerEntero(scanner);
 
@@ -113,15 +113,15 @@ public class App {
         switch (caso) {
             case 1:
                 datos = GeneradorArreglos.aleatorio(n);
-                System.out.println("\n-> Caso 1 generado: " + n + " elementos aleatorios.");
+                System.out.println("\n Caso 1 generado: " + n + " elementos aleatorios.");
                 break;
             case 2:
                 datos = GeneradorArreglos.ordenado(n);
-                System.out.println("\n-> Caso 2 generado: " + n + " elementos en orden ascendente.");
+                System.out.println("\nCaso 2 generado: " + n + " elementos en orden ascendente.");
                 break;
             case 3:
                 datos = GeneradorArreglos.inverso(n);
-                System.out.println("\n-> Caso 3 generado: " + n + " elementos en orden inverso.");
+                System.out.println("\n Caso 3 generado: " + n + " elementos en orden inverso.");
                 break;
             default:
                 System.out.println("Opcion no valida.");
@@ -179,12 +179,12 @@ public class App {
 
         System.out.println("\nResultados para: " + nombre);
         if (m.desbordado) {
-            System.out.println(" [!] Desbordamiento de pila (StackOverflowError).");
+            System.out.println("Desbordamiento de pila (StackOverflowError).");
             System.out.println(" Causa: La recursion excedio el limite en este caso.");
         } else {
-            System.out.printf("  - Tiempo de ejecucion : %.4f ms%n", m.tiempoMs);
-            System.out.printf("  - Comparaciones       : %,d%n", m.comparaciones);
-            System.out.printf("  - Intercambios        : %,d%n", m.intercambios);
+            System.out.printf(" Tiempo de ejecucion : %.4f ms%n", m.tiempoMs);
+            System.out.printf(" Comparaciones       : %,d%n", m.comparaciones);
+            System.out.printf(" Intercambios        : %,d%n", m.intercambios);
         }
         mostrarVistaPrevia(copiaDatos);
 
@@ -195,23 +195,34 @@ public class App {
         System.out.println("\nTabla comparativa con datos actuales (" + datos.length + " elementos)");
         System.out.printf("%-24s | %15s | %15s | %15s%n",
                 "Algoritmo", "Tiempo (ms)", "Comparaciones", "Intercambios");
-        System.out.println("------------------------------------------------------------------------------------------");
 
         String[] nombres = {
-            "Bubble Sort", "Selection Sort", "Insertion Sort",
-            "Merge Sort", "Quick Sort", "Heap Sort"
+                "Bubble Sort", "Selection Sort", "Insertion Sort",
+                "Merge Sort", "Quick Sort", "Heap Sort"
         };
 
         for (int i = 0; i < 6; i++) {
             int[] copia = datos.clone();
             Metricas m = null;
             switch (i) {
-                case 0: m = AlgoritmosOrdenamiento.bubbleSort(copia); break;
-                case 1: m = AlgoritmosOrdenamiento.selectionSort(copia); break;
-                case 2: m = AlgoritmosOrdenamiento.insertionSort(copia); break;
-                case 3: m = AlgoritmosOrdenamiento.mergeSort(copia); break;
-                case 4: m = AlgoritmosOrdenamiento.quickSort(copia); break;
-                case 5: m = AlgoritmosOrdenamiento.heapSort(copia); break;
+                case 0:
+                    m = AlgoritmosOrdenamiento.bubbleSort(copia);
+                    break;
+                case 1:
+                    m = AlgoritmosOrdenamiento.selectionSort(copia);
+                    break;
+                case 2:
+                    m = AlgoritmosOrdenamiento.insertionSort(copia);
+                    break;
+                case 3:
+                    m = AlgoritmosOrdenamiento.mergeSort(copia);
+                    break;
+                case 4:
+                    m = AlgoritmosOrdenamiento.quickSort(copia);
+                    break;
+                case 5:
+                    m = AlgoritmosOrdenamiento.heapSort(copia);
+                    break;
             }
 
             if (m.desbordado) {

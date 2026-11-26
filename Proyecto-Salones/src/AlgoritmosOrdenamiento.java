@@ -1,6 +1,4 @@
 public class AlgoritmosOrdenamiento {
-
-    // 1. Bubble Sort Optimizado
     public static Metricas bubbleSort(int[] arr) {
         Metricas m = new Metricas();
         int n = arr.length;
@@ -28,7 +26,6 @@ public class AlgoritmosOrdenamiento {
         return m;
     }
 
-    // 2. Selection Sort
     public static Metricas selectionSort(int[] arr) {
         Metricas m = new Metricas();
         int n = arr.length;
@@ -54,7 +51,6 @@ public class AlgoritmosOrdenamiento {
         return m;
     }
 
-    // 3. Insertion Sort
     public static Metricas insertionSort(int[] arr) {
         Metricas m = new Metricas();
         int n = arr.length;
@@ -81,7 +77,6 @@ public class AlgoritmosOrdenamiento {
         return m;
     }
 
-    // 4. Merge Sort
     public static Metricas mergeSort(int[] arr) {
         Metricas m = new Metricas();
         long inicio = System.nanoTime();
@@ -107,8 +102,10 @@ public class AlgoritmosOrdenamiento {
         int[] izquierda = new int[n1];
         int[] derecha = new int[n2];
 
-        for (int i = 0; i < n1; i++) izquierda[i] = arr[inicio + i];
-        for (int j = 0; j < n2; j++) derecha[j] = arr[medio + 1 + j];
+        for (int i = 0; i < n1; i++)
+            izquierda[i] = arr[inicio + i];
+        for (int j = 0; j < n2; j++)
+            derecha[j] = arr[medio + 1 + j];
 
         int i = 0, j = 0, k = inicio;
 
@@ -140,7 +137,6 @@ public class AlgoritmosOrdenamiento {
         }
     }
 
-    // 5. Quick Sort (Partición Lomuto, pivote = último elemento)
     public static Metricas quickSort(int[] arr) {
         Metricas m = new Metricas();
         long inicio = System.nanoTime();
@@ -185,7 +181,6 @@ public class AlgoritmosOrdenamiento {
         return i + 1;
     }
 
-    // 6. Heap Sort
     public static Metricas heapSort(int[] arr) {
         Metricas m = new Metricas();
         int n = arr.length;
